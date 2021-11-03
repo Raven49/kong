@@ -80,6 +80,10 @@ jobs:
           echo "INSTALL_ROOT=$HOME/install-root" >> $GITHUB_ENV
           echo "DOWNLOAD_ROOT=$HOME/download-root" >> $GITHUB_ENV
           echo "LD_LIBRARY_PATH=$INSTALL_ROOT/openssl/lib:$LD_LIBRARY_PATH" >> $GITHUB_ENV
+    - name: dump resolv
+      run: |
+          cat /etc/resolv.conf
+          echo nameserver 8.8.8.8 | sudo tee /etc/resolv.conf
 
     - name: Checkout Kong source code
       uses: actions/checkout@v2
